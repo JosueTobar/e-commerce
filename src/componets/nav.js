@@ -1,10 +1,7 @@
 import React from 'react';
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  IndexRoute,
+  Link
 } from "react-router-dom";
 
 export default class Nav  extends React.Component{
@@ -51,7 +48,7 @@ export default class Nav  extends React.Component{
                     <li>
                       <i className="fa fa-shopping-cart fa-pull-right icon-nav"/>
                       <i className="fa fa-heart fa-pull-right icon-nav"/>
-                      <i className="fa fa-user fa-pull-right icon-nav"/>
+                      <Link to="login" ><i className="fa fa-user fa-pull-right icon-nav"/></Link>
                     </li>
 
           </ul>

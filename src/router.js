@@ -21,7 +21,7 @@ export default class Banner  extends React.Component{
                   <Route exact path="/">
                     <Home />
                   </Route>
-                  <Route exact path="/producto/:id" children={<Child />}>
+                  <Route exact path="/producto/:id" children={<SetProduct />}>
 
                   </Route>
                   <Route exact path="/login">
@@ -36,7 +36,7 @@ export default class Banner  extends React.Component{
   }
 
 }
-function Child() {
+function SetProduct() {
   let { id } = useParams();
 
   return (
