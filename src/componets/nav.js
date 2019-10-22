@@ -50,7 +50,6 @@ export default class Nav  extends React.Component{
                       <i className="fa fa-heart fa-pull-right icon-nav"/>
                       <Link to="login" ><i className="fa fa-user fa-pull-right icon-nav"/></Link>
                     </li>
-
           </ul>
         </div>
 
