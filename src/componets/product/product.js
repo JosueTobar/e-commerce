@@ -6,19 +6,38 @@ import {
 export default class Product  extends React.Component{
   constructor(props) {
       super(props);
-      this.state = { products: []
+    
+      this.state = { 
+                  products: [],
+                  baseURL: "http://192.168.100.72:8090/ecommerce/images/"
               }
     }
 
-   componentDidMount() {
-      fetch('http://192.168.100.72:8090/ecommerce/api/producto')
-        .then(response => response.json())
-        .then((products) => {
-          this.setState({ products: products })
-        })
-      .catch(console.log)
+   componentWillMount() {
+        this.getUriBase();
+        this.cargarPoduct();
     }
-    
+    /*Uri base */
+    getUriBase =() =>{
+      fetch('http://192.168.100.72:8090/ecommerce/api/uri')
+      .then((uri) => {
+       
+        this.setState({baseURL:uri})
+      })
+    .catch(console.log)
+    }
+
+    /*List product */
+  cargarPoduct =() =>{
+    fetch('http://192.168.100.72:8090/ecommerce/api/producto')
+    .then(response => response.json())
+    .then((products) => {
+      this.setState({ products: products })
+    })
+  .catch(console.log)
+
+  }
+
  detalleProducto = (pro) =>{
      console.log(pro)
  }
@@ -42,7 +61,7 @@ export default class Product  extends React.Component{
                           <div className="product-grid6">
                                 <div className="product-image6">
                                 <Link to={"/producto/"+art.idProducts+"" }>
-                                        <img className="img-fluid" src={process.env.PUBLIC_URL+"/images/carousel1.jpg"} alt="Responsive image" />
+                                        <img className="img-fluid" src= {(art.proImageSet.length > 0)? art.proImageSet[0].url : "http://www.sanisidrolonas.com.ar/wp-content/uploads/2014/05/sin-imagen.jpg"} alt="Responsive image" />
                                 </Link>    
                                 </div>
                           </div>

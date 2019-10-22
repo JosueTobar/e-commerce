@@ -3,7 +3,9 @@ import Nav from '../componets/nav';
 import Footer from '../componets/footer/footer';
 
 export default class LoginPage extends React.Component {
+  
   constructor(props) {
+    var produc = new Object;
     super(props);
     this.state = { product: [] }
   }
@@ -13,7 +15,7 @@ export default class LoginPage extends React.Component {
     fetch(url)
       .then(response => response.json())
       .then((products) => {
-        this.setState({ product: products })
+        this.produc = products ;
       })
       .catch(console.log)
   }
@@ -47,9 +49,8 @@ export default class LoginPage extends React.Component {
             </div>
             <div className="col-md-5">
               <center>
-              <img width="250px" height="400" src="http://img.bbystatic.com/BestBuy_US/images/products/5613/5613060_sd.jpg" class="img-responsive" />
+              <img width="250px" height="400" src={(this.state.product.proImageSet.length > 0)? this.state.product.proImageSet[0].url : "http://www.sanisidrolonas.com.ar/wp-content/uploads/2014/05/sin-imagen.jpg"} class="img-responsive" />
               </center>
-              
             </div>
             <div className="col-md-5 ">
               <h3 className=" text-center"  >100%  <i className="fa fa-thumbs-up " style={{ "font-size": "1.2em" }} ></i> </h3>

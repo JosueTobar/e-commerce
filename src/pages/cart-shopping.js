@@ -57,7 +57,8 @@ export default class cartShopping  extends React.Component{
                                 <td colSpan="3"></td>
                                   <td >Total </td>
                                   <td >$500 </td>
-                                  <td><a className="btn btn-secondary btn-lg"> Efectuar pedido</a> </td>
+                                  <button className="btn  btn-block mt-1" style={{"border-radius": " 15px  15px  15px  15px","background":"#cccccc"}} > Efectuar pedido </button>
+                                  
                               </tr>
                             </tfoot>
                     </table>
