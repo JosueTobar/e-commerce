@@ -1,0 +1,1 @@
+var  CAR_SHOP = [];

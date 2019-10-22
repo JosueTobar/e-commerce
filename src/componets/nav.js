@@ -7,8 +7,7 @@ import {
 export default class Nav  extends React.Component{
   render(){
     return(
-      <nav className="navbar navbar-expand-lg navbar-light bg-light  right ">
-
+      <nav className="navbar navbar-expand-lg navbar-light bg-light  ">
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -18,7 +17,6 @@ export default class Nav  extends React.Component{
             <li className="nav-item active title-nav">
               <a className="nav-link" href="#">TU MARCA/TULOGO <span class="sr-only">(current)</span></a>
             </li>
-
                     <li className="nav-item active">
                       <a className="nav-link" href="#">NOSOTROS</a>
                     </li>
@@ -40,24 +38,22 @@ export default class Nav  extends React.Component{
                       </div>
                     </li>
                     <li className="nav-item active">
-                      <a className="nav-link" href="#">SERVIVIOS</a>
+                      <a className="nav-link" href="#">SERVICIOS</a>
                     </li>
                     <li className="nav-item active">
                       <a className="nav-link" href="#">CONTACTANOS</a>
                     </li>
-                    <li>
-                      <i className="fa fa-shopping-cart fa-pull-right icon-nav"/>
+                    <li className="pull-right">
+                    
+                      <Link to="../CardShopping" style={{"text-decoration":"none","color":"black"}} > <i className="fa fa-shopping-cart fa-pull-right icon-nav"/></Link>
                       <i className="fa fa-heart fa-pull-right icon-nav"/>
-                      <Link to="login" ><i className="fa fa-user fa-pull-right icon-nav"/></Link>
+                      <Link to="../login" style={{"text-decoration":"none","color":"black"}} ><i className="fa fa-user fa-pull-right icon-nav"/></Link>
+                      <i className="fa fa-search fa-pull-right icon-nav"/>
+                     
                     </li>
-
           </ul>
         </div>
-
-
-
       </nav>
-
     );
   }
 }
