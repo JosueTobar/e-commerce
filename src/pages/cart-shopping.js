@@ -13,7 +13,8 @@ export default class cartShopping  extends React.Component{
           <header>
           <Nav/>
           </header>
-          <div className="mr-5 ml-5  mt-5 mb-5">
+          <body>
+          <div className="contenier mr-5 ml-5  mt-5 mb-5">
              <div className="row">
                
                 <div className="col-md-12"> 
@@ -65,6 +66,8 @@ export default class cartShopping  extends React.Component{
                 </div>
              </div>
            </div>
+           </body>
+
           <Footer/>
       </div>
     );

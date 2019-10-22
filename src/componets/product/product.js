@@ -8,28 +8,17 @@ export default class Product  extends React.Component{
       super(props);
     
       this.state = { 
-                  products: [],
-                  baseURL: "http://192.168.100.72:8090/ecommerce/images/"
-              }
+                  products: []
+                   }
     }
 
    componentWillMount() {
-        this.getUriBase();
         this.cargarPoduct();
     }
-    /*Uri base */
-    getUriBase =() =>{
-      fetch('http://192.168.100.72:8090/ecommerce/api/uri')
-      .then((uri) => {
-       
-        this.setState({baseURL:uri})
-      })
-    .catch(console.log)
-    }
 
-    /*List product */
+  /*List product */
   cargarPoduct =() =>{
-    fetch('http://192.168.100.72:8090/ecommerce/api/producto')
+    fetch('http://192.168.100.47:8090/ecommerce/api/producto')
     .then(response => response.json())
     .then((products) => {
       this.setState({ products: products })
@@ -47,7 +36,7 @@ export default class Product  extends React.Component{
       <div className="container" >
 
             <div className="row title-product   text-center" >
-         <div className="col-md-12    m-2  ">
+         <div className="col-md-12 m-2  ">
          Productos
            </ div>
          
@@ -56,23 +45,24 @@ export default class Product  extends React.Component{
           <div className="row">
           {this.state.products.map((art, index)=> {
                 return (
-                  <div  key={art.idProducts} className="col-md-6  col-lg-3   mt-3  ">
-                      <div class="card" >
-                          <div className="product-grid6">
-                                <div className="product-image6">
-                                <Link to={"/producto/"+art.idProducts+"" }>
-                                        <img className="img-fluid" src= {(art.proImageSet.length > 0)? art.proImageSet[0].url : "http://www.sanisidrolonas.com.ar/wp-content/uploads/2014/05/sin-imagen.jpg"} alt="Responsive image" />
-                                </Link>    
-                                </div>
+                  <div  key={art.idProducts} className="col-md-6  col-lg-3 mt-3 ">
+                      <div class="card  color-g1">
+                          <div className="product-grid">
+                          <Link to={"/producto/"+art.idProducts+"" } className="product-image "> 
+                                <div className ="product-grid">
+                      <img className="card-img-top img-fluid  product-image jumbotron" src= {(art.proImageSet.length > 0)? art.proImageSet[0].url : "http://www.sanisidrolonas.com.ar/wp-content/uploads/2014/05/sin-imagen.jpg"}  alt="..."/>
+                      </div>
+                           </Link>       
                           </div>
                       <div class="card-body">
                           <h5 class="card-title text-center">100%  <i className="fa fa-thumbs-up " style={{"font-size": "1.7em"}}></i> </h5>
                           <h5 class="card-title">{art.nameProducts} </h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                              <i className="fa fa-shopping-cart pull-left" style={{"font-size": "1.7em", "padding-left":"20%"}}></i>
-                              <i className="fa  fa-heart  pull-right" style={{"font-size": "1.7em", "padding-right":"20%"}}></i>
+                           <p class="card-text">Some quick example text to build on the card title and make up the bulk of.</p>
+                              <i className="fa fa-shopping-cart pull-left link-p-l" ></i>
+                              <i className="fa  fa-heart  pull-right link-p-r"></i>
                       </div>
                     </div> 
+                 
                   </div>
               );
             })}

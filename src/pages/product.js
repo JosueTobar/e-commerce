@@ -5,17 +5,31 @@ import Footer from '../componets/footer/footer';
 export default class LoginPage extends React.Component {
   
   constructor(props) {
-    var produc = new Object;
+    var estado = false;
     super(props);
-    this.state = { product: [] }
+    this.state = { 
+      product: {},
+      images:[],
+      image:{}
+    }
   }
 
-  componentDidMount() {
-    var url = 'http://192.168.100.72:8090/ecommerce/api/producto/' + this.props.id;
+  showCheckBok =() =>{
+    this.estado = !this.estado;
+      console.log(this.estado);
+  }
+  reloadImage =(img) =>{
+    this.setState({image: img })
+  }
+
+  componentWillMount() {
+    var url = 'http://192.168.100.47:8090/ecommerce/api/producto/' + this.props.id;
     fetch(url)
       .then(response => response.json())
       .then((products) => {
-        this.produc = products ;
+        this.setState({ product: products })
+        this.setState({ images: products.proImageSet })
+        this.setState({ image: products.proImageSet[0] })
       })
       .catch(console.log)
   }
@@ -26,31 +40,41 @@ export default class LoginPage extends React.Component {
         <header>
           <Nav />
         </header>
+
         <div className="container mt-5" >
           <div className="row">
             <div class="col-md-12 tex-center">
-              <p>  {this.state.product.nameProducts} </p>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1" onClick={(e)=>this.showCheckBok()} />
+                    <label className="form-check-label" for="exampleCheck1" >Check me out</label>
+                  </div>
+              <p>  {this.state.product.nameProducts } </p>
             </div>
           </div>
           <div className="row">
             <div className="col-md-2 d-none d-lg-block ">
               <table>
-                <tr>
-                  <td><img className=" " width="60px" height="80px" src="http://img.bbystatic.com/BestBuy_US/images/products/5613/5613060_sd.jpg" class="img-responsive" /></td>
-                </tr>
-                <tr>
-                  <td> <img width="60px" height="80px" src="http://img.bbystatic.com/BestBuy_US/images/products/5613/5613060_sd.jpg" class="img-responsive" /></td>
-                </tr>
-                <tr>
-                  <td><img width="60px" height="80px" src="http://img.bbystatic.com/BestBuy_US/images/products/5613/5613060_sd.jpg" class="img-responsive" /></td>
-                </tr>
+                {this.state.images.map((img,i)=>{
+                  return(
+                    <tr>
+                      <td>
+                        <a onClick={()=>{this.reloadImage(img)}}  > 
+                           <img  className="" width="60px" height="80px" src={img.url} class="img-responsive" />
+                        </a>
+                        </td>
+                   </tr>
+                  );
+                }) }
+                
               </table>
-
+              
             </div>
             <div className="col-md-5">
-              <center>
-              <img width="250px" height="400" src={(this.state.product.proImageSet.length > 0)? this.state.product.proImageSet[0].url : "http://www.sanisidrolonas.com.ar/wp-content/uploads/2014/05/sin-imagen.jpg"} class="img-responsive" />
-              </center>
+            <td>
+              
+              <img className=" " width="350px" height="600px" src={this.state.image.url} class="img-responsive" />
+              
+              </td>
             </div>
             <div className="col-md-5 ">
               <h3 className=" text-center"  >100%  <i className="fa fa-thumbs-up " style={{ "font-size": "1.2em" }} ></i> </h3>
