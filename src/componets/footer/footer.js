@@ -1,33 +1,29 @@
-
 import React from 'react';
 
 export default class Footer extends React.Component {
     render() {
         return (
-            <footer  className="footer ">
-               
-                
+            <footer  className="footer">
                 <div className="row align-items-center">
-                    <div className="col-md-8" style={{'lign-self':'auto'}}>
-                    <h5 style={{'text-align':'left'}}>ACERCA DE</h5>
-                    <span className="copyright"> <a href="" className="text-muted" style={{'margin-top':'8px'}}>Informacion de la empresa</a></span>
-                    <span className="copyright"> <a href="" className="text-muted" style={{'margin-left': '5px' ,'margin-top':'5px'}}>Inversionistas</a></span>
-                    <span className="copyright"> <a href="" className="text-muted" style={{'margin-left': '5px' ,'margin-top':'5px'}}>Noticias</a></span>
-                    <span className="copyright"> <a href="" className="text-muted" style={{'margin-top':'8px'}}>Relaciones gubernamentales</a></span>
-                    <span className="copyright"> <a href="" className="text-muted" style={{'margin-left': '5px' ,'margin-top':'5px'}}>Trabajos</a></span>
-                    <span className="copyright"> <a href="" className="text-muted" style={{'margin-left': '5px' ,'margin-top':'5px'}}>Anunciate con nosotros</a></span>
-                    <span className="copyright"> <a href="" className="text-muted" style={{'margin-left': '5px' ,'margin-top':'5px'}}>Pol&iacute;tica</a></span>
-                    <span className="copyright"> <a href="" className="text-muted" style={{'margin-left': '5px' ,'margin-top':'5px'}}>ǀ</a></span>
+                    <div className="col-md-8" >
+                    <h5 className="pull-left">ACERCA DE</h5>
+                    <span className="copyright"> <a href="" className="text-foter-ft">Informacion de la empresa</a></span>
+                    <span className="copyright"> <a href="" className="text-foter-t">Inversionistas</a></span>
+                    <span className="copyright"> <a href="" className="text-foter-t">Noticias</a></span>
+                    <span className="copyright"> <a href="" className="text-foter-ft">Relaciones gubernamentales</a></span>
+                    <span className="copyright"> <a href="" className="text-foter-t">Trabajos</a></span>
+                    <span className="copyright"> <a href="" className="text-foter-t">Anunciate con nosotros</a></span>
+                    <span className="copyright"> <a href="" className="text-foter-t">Pol&iacute;tica</a></span>
+                    <span className="copyright"> <a href="" className="text-foter-t">ǀ</a></span>
                     </div>
-                    <div className="col-md-4" style={{'text-align':'left'}}>
-                        <h5 style={{'text-align':'left'}}>COMUNIDAD</h5>
-                        <span className="copyright"> <a href="" className="text-muted" style={{'margin-top':'8px'}}>Avisos</a></span>
-                        <span className="copyright"> <a href="" className="text-muted" style={{'margin-right': '5px' ,'margin-top':'5px'}}>Foro de preguntas y respuestas</a></span>
-                        <span className="copyright"> <a href="" className="text-muted" style={{'margin-right': '5px' ,'margin-top':'5px'}}>Foro de discusi&oacute;n</a></span>
-                        <span className="copyright"> <a href="" className="text-muted" style={{'margin-top':'8px'}}>Grupos</a></span>
+                    <div className="col-md-4 pull-left">
+                        <h5 className="pull-left" >COMUNIDAD</h5>
+                        <span className="copyright"> <a href="" className="text-foter-ft">Avisos</a></span>
+                        <span className="copyright"> <a href="" className="text-foter-t">Foro de preguntas y respuestas</a></span>
+                        <span className="copyright"> <a href="" className="text-foter-t">Foro de discusi&oacute;n</a></span>
+                        <span className="copyright"> <a href="" className="text-foter-t">Grupos</a></span>
                     </div>
-                </div>
-               
+                </div> 
         </footer>
         );
     }

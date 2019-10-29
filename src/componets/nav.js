@@ -14,8 +14,8 @@ export default class Nav  extends React.Component{
 
         <div className="collapse navbar-collapse   " id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto ">
-            <li className="nav-item active title-nav">
-              <a className="nav-link" href="#">TU MARCA/TULOGO <span class="sr-only">(current)</span></a>
+            <li className="nav-item  title-nav">
+              <a className="nav-link" href="#">TU MARCA/TULOGO <span className="sr-only">(current)</span></a>
             </li>
                     <li className="nav-item active">
                       <a className="nav-link" href="#">NOSOTROS</a>
@@ -44,12 +44,10 @@ export default class Nav  extends React.Component{
                       <a className="nav-link" href="#">CONTACTANOS</a>
                     </li>
                     <li className="pull-right">
-                    
-                      <Link to="../CardShopping" style={{"text-decoration":"none","color":"black"}} > <i className="fa fa-shopping-cart fa-pull-right icon-nav"/></Link>
+                      <Link to="../CardShopping"  >  <i className="fa fa-shopping-cart pull-right icon-nav link "/>  </Link>
                       <i className="fa fa-heart fa-pull-right icon-nav"/>
-                      <Link to="../login" style={{"text-decoration":"none","color":"black"}} ><i className="fa fa-user fa-pull-right icon-nav"/></Link>
+                      <Link to="../login" ><i className="fa fa-user fa-pull-right icon-nav link"/></Link>
                       <i className="fa fa-search fa-pull-right icon-nav"/>
-                     
                     </li>
           </ul>
         </div>

@@ -1,25 +1,30 @@
  /********************* NAV **********************/
- 
 .icon-nav{
     padding-top: 10px;
     padding-left: 1em;
     font-size: 1.5em;
 }
  /********************* Producto **********************/
- 
 /* Titulo de las prduct-Card  */
 .title-product{
-  
     font-size: 2em;
   }
-  /* Distribucion de las prduct-Card  */
-    .productItem{
+.productItem{
     padding-top:3em;
   }
-
+.link{
+    text-decoration :none;
+    color :black
+  }
+.text-muted{
+    padding-top:3em;
+  }
+.copyright{
+    color:black;
+  }
 
   /********************* Categoria **********************/
-  .img-category{
+.img-category{
     margin-top: 10%;
     width: 6em;
     height: 6em;
@@ -27,11 +32,25 @@
     margin-right: auto;
     display: block;
  }
+
  .img-category-text{    
      font-size: 2.5em;
-     
      text-align: center;
  }
+ 
+/********************* Footer **********************/
+.text-footer-t{
+  margin-left : 5px; 
+  margin-top:5px;
+}
+.text-footer-ft{
+  margin-top:8px;
+}
+
+.text-footer-ft{
+  margin-top:8px;
+}
+
 
 /********************* Categoria **********************/
 .icon-login{
