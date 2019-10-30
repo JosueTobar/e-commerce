@@ -11,28 +11,32 @@ import {
   Route,
   useParams
 } from "react-router-dom";
+import {Provider} from "react-redux";
+import Store from "./store";
 
 export default class Banner  extends React.Component{
   render(){
     return(
-      <Router>
-            <Switch>
-                  <Route exact path="/">
-                    <Home />
-                  </Route>
-                  <Route exact path="/producto/:id" children={<SetProduct />}>
-                  </Route>
-                   <Route exact path="/login">
-                    <Login/>
-                  </Route>
-                  <Route exact path="/CardShopping">
-                    <CartShopping />
-                  </Route> 
-                  <Route exact path="/registration">
-                    <Registration />
-                  </Route>
-            </Switch>
-    </Router>
+      <Provider store={Store}>
+          <Router>
+                <Switch>
+                      <Route exact path="/">
+                        <Home />
+                      </Route>
+                      <Route exact path="/producto/:id" children={<SetProduct/>}>
+                      </Route>
+                      <Route exact path="/login">
+                        <Login/>
+                      </Route>
+                      <Route exact path="/CardShopping">
+                        <CartShopping />
+                      </Route> 
+                      <Route exact path="/registration">
+                        <Registration />
+                      </Route>
+                </Switch>
+        </Router>
+    </Provider>
     );
   }
 }
