@@ -88,7 +88,7 @@ export default class LoginPage extends React.Component {
           <div className="row mt-5 mb-5">
             <div className="col-md-10 m-5 ">
               <h1>Descripción</h1>
-                <p className="text-justify" >{this.state.product.description}</p>
+                <p className="text-justify">{this.state.product.description}</p>
             </div>
           </div>
         </div>

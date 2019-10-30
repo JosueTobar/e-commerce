@@ -24,7 +24,7 @@ const cartShopping = ({ cart, deleteProductCart, updateProductCart }) => (
   </div>
 );
 
-const table = (cart, deleteProductCart, updateProductCart) => (
+const table = (cart, deleteProductCart, updateProductCart ,subTotal) => (
   <table className="table table-bordered">
     <thead>
       <tr>
@@ -58,7 +58,7 @@ const table = (cart, deleteProductCart, updateProductCart) => (
                 </di>
               </div>
             </td>
-            <td>${p.subTotal = calculateSudTotal(p.price, p.quantityCart)}</td>
+            <td>${ p.subTotal = calculateSudTotal(p.price, p.quantityCart)}</td>
             <td>
               <button onClick={(e) => deleteProductCart(e, p)} >X</button>
             </td>
@@ -71,7 +71,7 @@ const table = (cart, deleteProductCart, updateProductCart) => (
       <tr>
         <td colSpan="2"></td>
         <td >Total </td>
-        <td >${calculateTotal(cart)} </td>
+        <td >${calculateTotal(cart).toLocaleString('en-IN', {maximumSignificantDigits: 2})} </td>
         <td>    <button className="btn  btn-block mt-1"  > Efectuar pedido </button></td>
       </tr>
     </tfoot>
