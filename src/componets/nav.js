@@ -15,7 +15,9 @@ export default class Nav  extends React.Component{
         <div className="collapse navbar-collapse conteiner-nav" id="navbarSupportedContent">
           <ul className="navbar-nav">
             <li className="nav-item  active title-nav">
-              <a className="nav-link" href="#">TU MARCA/TULOGO <span className="sr-only">(current)</span></a>
+            <Link to="../" className="nav-link"> 
+                TU MARCA/TULOGO 
+             </Link>
             </li>
                     <li className="nav-item active">
                       <a className="nav-link" href="#">NOSOTROS</a>

@@ -13,6 +13,9 @@
     border: 0px solid #000000;
 }
 
+.card-product{
+    min-height: 225px;
+}
 /* tiuluos */
 .title-xl{
   font-size: 50px;

@@ -8,7 +8,7 @@ import {
 import { connect } from "react-redux";
 import { stat } from 'fs';
 
-const cartShopping = ({ products }) => (
+const cartShopping = ({ cart }) => (
   <div>
     <header>
       <Nav />
@@ -30,18 +30,18 @@ const cartShopping = ({ products }) => (
                 </tr>
               </thead>
               <tbody>
-                {products.map((p) => (
+                {cart.map((p) => (
                   <tr key={p.idProducts}>
                     {console.log(p)}
                     <td>
-                      <div> <img width="40px" height="80px" src="http://img.bbystatic.com/BestBuy_US/images/products/5613/5613060_sd.jpg" class="img-responsive" /> SmartPhone </div>
+                      <div> <img width="40px" height="80px" src={(p.proImageSet.length > 0) ? p.proImageSet[0].url : "http://www.sanisidrolonas.com.ar/wp-content/uploads/2014/05/sin-imagen.jpg"} class="img-responsive" /> {p.nameProduct} </div>
                       <div>
                       </div>
                     </td>
                     <td>{p.price}</td>
                     <td><input className="form-control " type="number" /> </td>
                     <td>{p.quantity}</td>
-                    <td>$500</td>
+                    <td>{p.price}</td>
                     <td>
                       <a style={{ "text-decoration": "none", "color": "black", "font-size": "2em" }} >  X </a>
                     </td>
@@ -70,7 +70,7 @@ const cartShopping = ({ products }) => (
 );
 
 const mapStoreToProps = state => ({
-  products: state.products
+  cart: state.cart
 
 })
 const mapDispatchToProps = descpatcht => ({})

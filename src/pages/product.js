@@ -5,7 +5,6 @@ import Footer from '../componets/footer/footer';
 export default class LoginPage extends React.Component {
 
   constructor(props) {
-    var estado = false;
     super(props);
     this.state = {
       product: {},
@@ -20,17 +19,26 @@ export default class LoginPage extends React.Component {
   reloadImage = (img) => {
     this.setState({ image: img })
   }
+
   componentWillMount() {
-    var url = 'http://192.168.100.47:8090/ecommerce/api/product/' + this.props.id;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    this.cargarPoduct();
+  }
+
+  /*List product */
+  cargarPoduct = () => {
+    var url = 'http://192.168.100.33:8090/ecommerce/api/product/' + this.props.id;
     fetch(url)
       .then(response => response.json())
       .then((products) => {
         this.setState({ product: products })
         this.setState({ images: products.proImageSet })
         this.setState({ image: products.proImageSet[0] })
+       
       })
       .catch(console.log)
   }
+
   render() {
     return (
       <div>
@@ -59,14 +67,12 @@ export default class LoginPage extends React.Component {
                 })}
               </table>
             </div>
-            <div className="col-md-5">
-              <td>
-                <img className="img-show-item "  src={this.state.image.url}  />
-              </td>
+            <div className="col-lg-5 col-md-10 sm-10 text-center">
+                <img className="img-show-item "  src={this.state.image.url}/>
             </div>
-            <div className="col-md-5 ">
+            <div className="col-lg-5 ">
               <h3 className=" text-center"  >100%  <i className="fa fa-thumbs-up " style={{ "font-size": "1.2em" }} ></i> </h3>
-              <p className=" text-center mb-5" >{this.state.product.description} </p>
+              <p className=" text-justify mb-5" >{this.state.product.description} </p>
               <form>
                 <div class="form-row mb-3 text-center">
                   <div class="col title-lg">
@@ -84,7 +90,7 @@ export default class LoginPage extends React.Component {
           <div className="row mt-5 mb-5">
             <div className="col-md-10 m-5 ">
               <h1>Descripción</h1>
-                <p>{this.state.product.description}</p>
+                <p className="text-justify" >{this.state.product.description}</p>
             </div>
           </div>
         </div>
