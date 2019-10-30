@@ -43,11 +43,11 @@ const products = ({products,baseUri,addProducToStore,addToCart}) => (
 
 document.onreadystatechange = () => {
   if (document.readyState === 'complete') {
-    console.log("documento listo")
+    var prueba = "prueba";
   }
 };
 //validacion si hay datos en el estate glabal de redux
-const loadProducts =( productsList ,baseUri, addProducToStore) =>{
+const loadProducts =(productsList ,baseUri, addProducToStore) =>{
     if(productsList.length <=0 ){
       var url = baseUri+"ecommerce/api/product"
       fetch(url)
@@ -59,7 +59,6 @@ const loadProducts =( productsList ,baseUri, addProducToStore) =>{
         })
         .catch(console.log)
     } 
-
 }
 //Recive una cadena y retorna una cantida de palabras...
 function ContadorPlabras(cadena, num) {

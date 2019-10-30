@@ -6,74 +6,126 @@ import {
   Link,
 } from "react-router-dom";
 import { connect } from "react-redux";
-import { stat } from 'fs';
-
-const cartShopping = ({ cart }) => (
+const cartShopping = ({ cart, deleteProductCart, updateProductCart }) => (
   <div>
     <header>
       <Nav />
     </header>
-    <body>
-      <div className="contenier mr-5 ml-5  mt-5 mb-5">
-        <div className="row">
-          <div className="col-md-12">
-            <center><h2> Cesta <i className="fa fa-shopping-cart mb-4" /> </h2> </center>
-            <table className="table table-bordered">
-              <thead>
-                <tr>
-                  <th scope="col">Descripción</th>
-                  <th scope="col">Precio Unitario</th>
-                  <th scope="col">Cantidad </th>
-                  <th scope="col">Envio</th>
-                  <th scope="col">Subtotal</th>
-                  <th scope="col">Eliminar</th>
-                </tr>
-              </thead>
-              <tbody>
-                {cart.map((p) => (
-                  <tr key={p.idProducts}>
-                    {console.log(p)}
-                    <td>
-                      <div> <img width="40px" height="80px" src={(p.proImageSet.length > 0) ? p.proImageSet[0].url : "http://www.sanisidrolonas.com.ar/wp-content/uploads/2014/05/sin-imagen.jpg"} class="img-responsive" /> {p.nameProduct} </div>
-                      <div>
-                      </div>
-                    </td>
-                    <td>{p.price}</td>
-                    <td><input className="form-control " type="number" /> </td>
-                    <td>{p.quantity}</td>
-                    <td>{p.price}</td>
-                    <td>
-                      <a style={{ "text-decoration": "none", "color": "black", "font-size": "2em" }} >  X </a>
-                    </td>
-                  </tr>
-                ))
-                }
 
-              </tbody>
-              <tfoot>
-                <tr>
-                  <td colSpan="3"></td>
-                  <td >Total </td>
-                  <td >$500 </td>
-                  <button className="btn  btn-block mt-1" style={{ "border-radius": " 15px  15px  15px  15px", "background": "#cccccc" }} > Efectuar pedido </button>
-
-                </tr>
-              </tfoot>
-            </table>
-          </div>
+    <div className="contanier mr-5 ml-5  mt-5 mb-5">
+      <div className="row">
+        <div className="col-md-12">
+          <center><h2> Cesta <i className="fa fa-shopping-cart mb-4" /> </h2> </center>
+          {table(cart, deleteProductCart, updateProductCart)}
         </div>
       </div>
-    </body>
-
-    <Footer />
+    </div>
+    
   </div>
 );
 
+const table = (cart, deleteProductCart, updateProductCart) => (
+  <table className="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Descripción</th>
+        <th scope="col">Precio Unitario</th>
+        <th scope="col">Cantidad </th>
+        <th scope="col">Subtotal</th>
+        <th scope="col">Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        cart.map((p) => (
+          <tr key={p.idProducts}>
+            <td>
+              <div className="product-image-cart" > <img  src={(p.proImageSet.length > 0) ? p.proImageSet[0].url : "http://www.sanisidrolonas.com.ar/wp-content/uploads/2014/05/sin-imagen.jpg"} class="img-responsive" /> {p.nameProducts} </div>
+              <div>
+              </div>
+            </td>
+            <td>{p.price}</td>
+            <td>
+              <div className="row">
+                <di className="col-5">
+                  <button onClick={(e) => p = moreProduct(e, p, updateProductCart)}  className="pull-right">+</button>
+                </di>
+                <di className="col-2">
+                  <input className="form-control form-control-sm" type="text" id={"canti" + p.idProducts} value={p.quantityCart} />
+                </di>
+                <di className="col-5">
+                  <button onClick={(e) => lessProduct(e, p, updateProductCart)} className="pull-left" >-</button>
+                </di>
+              </div>
+            </td>
+            <td>${p.subTotal = calculateSudTotal(p.price, p.quantityCart)}</td>
+            <td>
+              <button onClick={(e) => deleteProductCart(e, p)} >X</button>
+            </td>
+          </tr>
+        ))
+      }
+
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colSpan="2"></td>
+        <td >Total </td>
+        <td >${calculateTotal(cart)} </td>
+        <td>    <button className="btn  btn-block mt-1"  > Efectuar pedido </button></td>
+      </tr>
+    </tfoot>
+  </table>
+)
+
+/*Cart operation */
+function lessProduct(e, p, updateProductCart) {
+  if(p.quantityCart >1){
+    p.quantityCart = p.quantityCart - 1;
+    updateProductCart(e, p)
+  } 
+}
+
+function moreProduct(e, p, updateProductCart) {
+  p.quantityCart = p.quantityCart + 1;
+  updateProductCart(e, p)
+}
+const calculateSudTotal = (pice, quantityCart) => (pice * quantityCart)
+
+function calculateTotal(productList) {
+  var price = 0;
+  productList.forEach(function (p) {
+    price = price + p.subTotal
+  });
+  return price;
+}
+
+/******** React Redux secction ********/
 const mapStoreToProps = state => ({
   cart: state.cart
+})
+
+const mapDispatchToProps = diapatch => ({
+  deleteProductCart(e, product) {
+    e = e || window.event;
+    e.preventDefault();
+    diapatch({
+      type: "DELETE_PRODUCT_FROM_CART",
+      product
+    })
+  },
+  updateProductCart(e, product) {
+    e = e || window.event;
+    e.preventDefault();
+    diapatch({
+      type: "UPDATE_PRODUCT_FROM_CART",
+      product
+    })
+  }
+
 
 })
-const mapDispatchToProps = descpatcht => ({})
+/************************************/
 
 export default connect(mapStoreToProps, mapDispatchToProps)(cartShopping);
 

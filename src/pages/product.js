@@ -25,7 +25,6 @@ export default class LoginPage extends React.Component {
     this.cargarPoduct();
   }
 
-  /*List product */
   cargarPoduct = () => {
     var url = 'http://192.168.100.33:8090/ecommerce/api/product/' + this.props.id;
     fetch(url)
@@ -34,7 +33,6 @@ export default class LoginPage extends React.Component {
         this.setState({ product: products })
         this.setState({ images: products.proImageSet })
         this.setState({ image: products.proImageSet[0] })
-       
       })
       .catch(console.log)
   }
@@ -47,7 +45,7 @@ export default class LoginPage extends React.Component {
         </header>
         <div className="container mt-5" >
           <div className="row">
-            <div class="col-md-12 text-center title-lg">
+            <div className="col-md-12 text-center title-lg">
               <p>{this.state.product.nameProducts}</p>
             </div>
           </div>
@@ -71,17 +69,17 @@ export default class LoginPage extends React.Component {
                 <img className="img-show-item "  src={this.state.image.url}/>
             </div>
             <div className="col-lg-5 ">
-              <h3 className=" text-center"  >100%  <i className="fa fa-thumbs-up " style={{ "font-size": "1.2em" }} ></i> </h3>
+              <h3 className=" text-center">100%  <i className="fa fa-thumbs-up text-xl"></i> </h3>
               <p className=" text-justify mb-5" >{this.state.product.description} </p>
               <form>
-                <div class="form-row mb-3 text-center">
-                  <div class="col title-lg">
+                <div className="form-row mb-3 text-center">
+                  <div className="col title-lg">
                     ${this.state.product.price}
                    </div>
                 </div>
               </form>
               <center>
-                <i className="fa fa-heart mr-4  align-middle" style={{ "font-size": "2.6em" }} > </i>  <a className="btn color-g2 br-10"> Añadir a la Cesta</a>
+                <i className="fa fa-heart mr-4  align-middle text-xl"> </i>  <a className="btn color-g2 br-10"> Añadir a la Cesta</a>
               </center>
             </div>
           </div>

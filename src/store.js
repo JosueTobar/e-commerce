@@ -14,16 +14,28 @@ const reducerCart = (state = initialState,action)=>{
                 products: action.productList
             }
         case "ADD_TO_CART":
-           return{
-            ...state,
-              cart: state.cart.concat(action.product)
-           }
+            var bolena = false;
+            return{
+             ...state,
+                 cart: state.cart.concat(action.product)
+                 //cart: state.cart.map((p) => !p.idProducts === action.product.idProducts? bolena = true: p
+                // )
+            }
+        case "DELETE_PRODUCT_FROM_CART":
+            return{
+                ...state,
+                cart: state.cart.filter(p => p.idProducts !== action.product.idProducts)
+            }
+         case "UPDATE_PRODUCT_FROM_CART":
+             return{
+                 ...state,
+                 //state.map((post)=>post.id === action.id ? {...post,editing:!post.editing}:post)
+                 cart: state.cart.map((p) => p.idProducts === action.product.idProducts?action.product:p)
+             }   
  
         default:
           // code block
       }
 return state
 }
-
-
 export default createStore(reducerCart)
