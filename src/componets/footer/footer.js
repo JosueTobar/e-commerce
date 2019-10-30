@@ -13,14 +13,14 @@ export default class Footer extends React.Component {
                                 </div>
                                 <div className="row">
                                     <div className="col">
-                                        <span className="copyright"> <a href="" className="text-foter-ft link">Informacion de la empresa</a></span>
-                                        <span className="copyright"> <a href="" className="text-foter-t link">Inversionistas</a></span>
-                                        <span className="copyright"> <a href="" className="text-foter-t link">Noticias</a></span>
-                                        <span className="copyright"> <a href="" className="text-foter-ft link">Relaciones gubernamentales</a></span>
-                                        <span className="copyright"> <a href="" className="text-foter-t link">Trabajos</a></span>
-                                        <span className="copyright"> <a href="" className="text-foter-t link">Anunciate con nosotros</a></span>
-                                        <span className="copyright"> <a href="" className="text-foter-t link">Pol&iacute;tica</a></span>
-                                        <span className="copyright"> <a href="" className="text-foter-t link">ǀ</a></span>
+                                        <span className="copyright"> <a href="" className=" text-md mb-2 text-foter-ft link">Informacion de la empresa</a></span>
+                                        <span className="copyright"> <a href="" className=" text-md  text-foter-t link">Inversionistas</a></span>
+                                        <span className="copyright"> <a href="" className=" text-md  text-foter-t link">Noticias</a></span>
+                                        <span className="copyright"> <a href="" className=" text-md  text-foter-ft link">Relaciones gubernamentales</a></span>
+                                        <span className="copyright"> <a href="" className=" text-md  text-foter-t link">Trabajos</a></span>
+                                        <span className="copyright"> <a href="" className=" text-md  text-foter-t link">Anunciate con nosotros</a></span>
+                                        <span className="copyright"> <a href="" className=" text-md  text-foter-t link">Pol&iacute;tica</a></span>
+                                        <span className="copyright"> <a href="" className=" text-md  text-foter-t link">ǀ</a></span>
 
                                     </div>
                                 </div>
@@ -33,10 +33,10 @@ export default class Footer extends React.Component {
                                 </div>
                                 <div className="row">
                                     <div className="col">
-                                        <span className="copyright"> <a href="" className="text-foter-ft link">Avisos</a></span>
-                                        <span className="copyright"> <a href="" className="text-foter-t link">Foro de preguntas y respuestas</a></span>
-                                        <span className="copyright"> <a href="" className="text-foter-t link">Foro de discusi&oacute;n</a></span>
-                                        <span className="copyright"> <a href="" className="text-foter-t link">Grupos</a></span>
+                                        <span className="copyright"> <a href="" className="text-md text-foter-ft link">Avisos</a></span>
+                                        <span className="copyright"> <a href="" className="text-md text-foter-t link">Foro de preguntas y respuestas</a></span>
+                                        <span className="copyright"> <a href="" className="text-md text-foter-t link">Foro de discusi&oacute;n</a></span>
+                                        <span className="copyright"> <a href="" className="text-md text-foter-t link">Grupos</a></span>
                                     </div>
                                 </div>
                             </div>

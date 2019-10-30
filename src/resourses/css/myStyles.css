@@ -5,6 +5,47 @@
  .color-g2{
    background: #cccccc;
  }
+ /*bordes semi redondeados*/
+.br-10{
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border: 0px solid #000000;
+}
+
+/* tiuluos */
+.title-xl{
+  font-size: 50px;
+  font-weight: bold;
+}
+.title-lg{
+  font-size: 30px;
+  font-weight: bold;
+}
+.title-md{
+  font-size: 20px;
+  font-weight: bold;
+}
+.title-sm{
+  font-size: 10px;
+  font-weight: bold;
+}
+/* tiuluos */
+.text-xl{
+  font-size: 50px;
+}
+.text-md{
+  font-size: 30px;
+}
+.text-md{
+  font-size: 15px; 
+}
+.text-sm{
+  font-size: 10px;
+}
+.text-xs{
+  font-size: 5px;
+}
  /*---------------- product list ---------------------*/
  .product-grid{
   width:100%;
@@ -49,11 +90,13 @@
     padding-left: 1em;
     font-size: 1.5em;
 }
+.conteiner-nav ul{
+  width: 75%;
+    
+}
+
  /********************* Producto **********************/
 /* Titulo de las prduct-Card  */
-.title-product{
-    font-size: 2em;
-  }
 .productItem{
     padding-top:3em;
   }
@@ -70,11 +113,8 @@
 
   /********************* Categoria **********************/
 .img-category{
-    margin-top: 10%;
-    width: 6em;
-    height: 6em;
-    margin-left: auto;
-    margin-right: auto;
+    height: 9em;
+    object-fit: contain;
     display: block;
  }
 

@@ -21,7 +21,7 @@ export default class LoginPage extends React.Component {
     this.setState({ image: img })
   }
   componentWillMount() {
-    var url = 'http://192.168.100.47:8090/ecommerce/api/producto/' + this.props.id;
+    var url = 'http://192.168.100.47:8090/ecommerce/api/product/' + this.props.id;
     fetch(url)
       .then(response => response.json())
       .then((products) => {
@@ -39,7 +39,7 @@ export default class LoginPage extends React.Component {
         </header>
         <div className="container mt-5" >
           <div className="row">
-            <div class="col-md-12 tex-center">
+            <div class="col-md-12 text-center title-lg">
               <p>{this.state.product.nameProducts}</p>
             </div>
           </div>
@@ -69,13 +69,13 @@ export default class LoginPage extends React.Component {
               <p className=" text-center mb-5" >{this.state.product.description} </p>
               <form>
                 <div class="form-row mb-3 text-center">
-                  <div class="col">
+                  <div class="col title-lg">
                     ${this.state.product.price}
                    </div>
                 </div>
               </form>
               <center>
-                <i className="fa fa-heart mr-4 " style={{ "font-size": "2.6em" }} > </i>  <a className="btn btn-secondary"> Añadir a la Cesta</a>
+                <i className="fa fa-heart mr-4  align-middle" style={{ "font-size": "2.6em" }} > </i>  <a className="btn color-g2 br-10"> Añadir a la Cesta</a>
               </center>
             </div>
           </div>

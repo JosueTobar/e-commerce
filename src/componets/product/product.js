@@ -17,7 +17,7 @@ export default class Product extends React.Component {
 
   /*List product */
   cargarPoduct = () => {
-    fetch('http://192.168.100.47:8090/ecommerce/api/producto')
+    fetch('http://192.168.100.47:8090/ecommerce/api/product')
       .then(response => response.json())
       .then((products) => {
         this.setState({ products: products })
@@ -31,16 +31,16 @@ export default class Product extends React.Component {
   render() {
     return (
       <div className="container" >
-        <div className="row title-product   text-center" >
-          <div className="col-md-12 m-2  ">
-            Productos
+        <div className="row  text-center" >
+          <div className="col-md-12 m-2 title-lg ">
+              <p>LO MÁS VENDIDO</p> 
           </div>
         </div>
         <div className="row">
           {this.state.products.map((art, index) => {
             return (
               <div key={art.idProducts} className="col-md-6  col-lg-3 mt-3 ">
-                <div class="card  color-g1">
+                <div class="card  color-g1 text-center">
                   <div className="product-grid">
                     <Link to={"/producto/" + art.idProducts + ""} className="product-image ">
                       <div className="product-grid">
@@ -49,9 +49,9 @@ export default class Product extends React.Component {
                     </Link>
                   </div>
                   <div class="card-body">
-                    <h5 class="card-title text-center">100%  <i className="fa fa-thumbs-up " style={{ "font-size": "1.7em" }}></i> </h5>
-                    <h5 class="card-title">{art.nameProducts + " $" + art.price} </h5>
-                    <p class="card-text"> {ContadorPlabras(art.description,8)}</p>
+                    <h5 class="card-title text-center">100%  <i className="fa fa-thumbs-up title-lg"></i> </h5>
+                    <p class="title-md">{art.nameProducts +"$" + art.price } </p>
+                    <p class="card-text"> {ContadorPlabras(art.description,75)}</p>
                     <i className="fa fa-shopping-cart pull-left link-p-l" ></i>
                     <i className="fa  fa-heart  pull-right link-p-r"></i>
                   </div>
@@ -71,8 +71,8 @@ function ContadorPlabras(cadena, num) {
       var BreakException = {};
       var tex = " ";
       try {
-        cadena.split(" ").forEach(function (element, i) {
-          tex = tex + element + " ";
+        cadena.split("").forEach(function (element, i) {
+          tex = tex + element + "";
           if (i === num) throw BreakException;
         });
       } catch (e) {
