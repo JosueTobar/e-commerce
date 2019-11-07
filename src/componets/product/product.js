@@ -7,14 +7,9 @@ import $ from "jquery";
 import { connect } from "react-redux";
 import { validate } from '@babel/types';
 
-const products = ({ products, cart, baseUri, addProducToStore, addToCart }, productListCart) => (
+const products = ({ products, cart, baseUri, addProducToStore, addToCart ,updateProductCart }, productListCart) => (
   <div className="container" >
-        <div className="bs-example msjBox " id="msjBox" style={{'display':'none'}}> 
-            <div className="alert alert-info alert-dismissible fade show">
-                <strong>Note!</strong> This is a simple example of dismissible alert.
-                <button type="button" className="close" data-dismiss="alert">&times;</button>
-            </div>
-        </div>
+    
     <div className="row  text-center" >
       <div className="col-md-12 m-2 title-lg ">
         <p>LO MÁS VENDIDO</p>
@@ -39,15 +34,22 @@ const products = ({ products, cart, baseUri, addProducToStore, addToCart }, prod
                 <p class="card-text"> {ContadorPlabras(art.description, 75)}  <Link to={"/producto/" + art.idProducts + ""}>más..</Link></p>
               </div>
               <di className="align-items-end mb-3">
-                <a onClick={(e) => addToCart(e, art)}></a> <i className="fa fa-shopping-cart pull-left link-p-l" ></i>
-                <button onClick={(e) => validateAddingToCart(e, art, productListCart, addToCart)} > Add to cart</button>
-                <i className="fa  fa-heart  pull-right link-p-r"></i>
+                <a onClick={(e) => validateAddingToCart(e, art, productListCart, addToCart, updateProductCart)} >  <i className="fa fa-shopping-cart pull-left link-p-l" ></i> </a> 
+                 <a onClick={(e) => ocultar()}> <i className="fa  fa-heart  pull-right link-p-r"></i>  </a>
+                
+                
               </di>
             </div>
           </div>
         ))}
     </div>
 
+    <div className="bs-example msjBox " id="msjBox" style={{'display':'none'}}> 
+            <div className="alert alert-info alert-dismissible">
+                <strong>Note!</strong> This is a simple example of dismissible alert.
+                
+            </div>
+        </div>
 
   </div>
 )
@@ -57,15 +59,7 @@ document.onreadystatechange = () => {
      //document.... 
   }
 };
-$(document).ready(function() {
-  setTimeout(function() {
-      $(".msjBox").fadeOut(1500);
-  },3000);
 
-  setTimeout(function() {
-      $(".content2").fadeIn(1500);
-  },6000);
-});
 //validacion si hay datos en el estate glabal de redux
 const loadProducts = (productsList, baseUri, addProducToStore) => {
   if (productsList.length <= 0) {
@@ -79,23 +73,25 @@ const loadProducts = (productsList, baseUri, addProducToStore) => {
   }
 }
 //valida si el producto ya existe en el carrito 
-const validateAddingToCart = (e, product, productList, addToCart) => {
+const validateAddingToCart = (e, product, productList, addToCart, updateProductCart) => {
   var valdate = true;
   productList.map((p) => {
     if (p.idProducts === product.idProducts) {
-      console.log("producto repetido")
-      valdate = false
+      p.quantityCart = p.quantityCart + 1;
+      updateProductCart(e,p);
+      valdate = false;
     }
   });
   if (valdate) {
-    console.log("producto add")
-    //document.getElementById('msjBox').style.display="block";
-    setTimeout(function() {
-      $(".msjBox").fadeOut(1500);
-     },3000);
-    addToCart(e, product)
+      document.getElementById('msjBox').style.display="block";
+      addToCart(e, product);
   }
 }
+
+function ocultar(){
+  document.getElementById('msjBox').style.display="none"
+}
+
 //Recive una cadena y retorna una cantida de palabras...
 function ContadorPlabras(cadena, num) {
   var BreakException = {};
@@ -128,6 +124,14 @@ const mapDispatchToProps = diapatch => ({
     e.preventDefault();
     diapatch({
       type: "ADD_TO_CART",
+      product
+    })
+  },
+  updateProductCart(e, product) {
+    e = e || window.event;
+    e.preventDefault();
+    diapatch({
+      type: "UPDATE_PRODUCT_FROM_CART",
       product
     })
   }

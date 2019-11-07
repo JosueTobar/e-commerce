@@ -24,7 +24,7 @@ const cartShopping = ({ cart, deleteProductCart, updateProductCart }) => (
   </div>
 );
 
-const table = (cart, deleteProductCart, updateProductCart ,subTotal) => (
+const table = (cart, deleteProductCart, updateProductCart ,Total) => (
   <table className="table table-bordered">
     <thead>
       <tr>
@@ -58,7 +58,7 @@ const table = (cart, deleteProductCart, updateProductCart ,subTotal) => (
                 </di>
               </div>
             </td>
-            <td>${ p.subTotal = calculateSudTotal(p.price, p.quantityCart)}</td>
+            <td>${ p.subTotal = parseFloat(calculateSudTotal(p.price, p.quantityCart)).toFixed(2)}</td>
             <td>
               <button onClick={(e) => deleteProductCart(e, p)} >X</button>
             </td>
@@ -71,8 +71,8 @@ const table = (cart, deleteProductCart, updateProductCart ,subTotal) => (
       <tr>
         <td colSpan="2"></td>
         <td >Total </td>
-        <td >${calculateTotal(cart).toLocaleString('en-IN', {maximumSignificantDigits: 2})} </td>
-        <td>    <button className="btn  btn-block mt-1"  > Efectuar pedido </button></td>
+        <td >${parseFloat(calculateTotal(cart)).toFixed(2)} </td>
+        <td>    <button className="btn  btn-primary mt-1"  > Efectuar pedido </button></td>
       </tr>
     </tfoot>
   </table>
@@ -94,8 +94,9 @@ const calculateSudTotal = (pice, quantityCart) => (pice * quantityCart)
 
 function calculateTotal(productList) {
   var price = 0;
+  console.log(productList);
   productList.forEach(function (p) {
-    price = price + p.subTotal
+    price = price + parseFloat(p.subTotal)
   });
   return price;
 }
