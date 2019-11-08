@@ -146,7 +146,6 @@
   margin-top:8px;
 }
 
-
 /********************* Categoria **********************/
 .icon-login{
    font-size: 2em;
@@ -179,3 +178,15 @@
   color:#DD4B39;
 }
 /********************* Shopping Cart **********************/
+.notification-container{
+ margin-top: 300px;
+}
+.notification{
+  background-color: rgba(9, 136, 221, 0.322);
+  color :#000000;
+}
+.notification-p{
+  position: absolute; 
+  top: 0; 
+  right: 0;
+}

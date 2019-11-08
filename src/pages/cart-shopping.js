@@ -5,13 +5,14 @@ import {
   BrowserRouter as Router,
   Link,
 } from "react-router-dom";
+import $ from "jquery";
 import { connect } from "react-redux";
+import { booleanLiteral } from '@babel/types';
 const cartShopping = ({ cart, deleteProductCart, updateProductCart }) => (
   <div>
     <header>
       <Nav />
     </header>
-
     <div className="contanier mr-5 ml-5  mt-5 mb-5">
       <div className="row">
         <div className="col-md-12">
@@ -20,7 +21,6 @@ const cartShopping = ({ cart, deleteProductCart, updateProductCart }) => (
         </div>
       </div>
     </div>
-    
   </div>
 );
 
@@ -60,12 +60,28 @@ const table = (cart, deleteProductCart, updateProductCart ,Total) => (
             </td>
             <td>${ p.subTotal = parseFloat(calculateSudTotal(p.price, p.quantityCart)).toFixed(2)}</td>
             <td>
-              <button onClick={(e) => deleteProductCart(e, p)} >X</button>
+              <button onClick={(e) =>showQuestion(e,p)} >X</button>
             </td>
+            <div className="modal fade" id={"product"+p.idProducts} tabindex="-1" role="dialog" aria-labelledby={"product"+p.idProducts} aria-hidden="true">
+                  <div className="modal-dialog modal-dialog-centered" role="document">
+                    <div className="modal-content">
+                      <div className="modal-body">
+                        <div className="row">
+                         <div className="col-lg-12 md-5">
+                            Estas seguro que desa Eliminar es producto ?..
+                         </div> 
+                         <div class="col-lg-12 mt-3">
+                         <button type="button mt-5 pull-right" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button mt-5 pull-left"  onClick={(e) => closeQuestion(deleteProductCart ,e, p)} className="btn btn-danger">Ok</button>
+                         </div> 
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
           </tr>
         ))
       }
-
     </tbody>
     <tfoot>
       <tr>
@@ -85,13 +101,31 @@ function lessProduct(e, p, updateProductCart) {
     updateProductCart(e, p)
   } 
 }
+//funcion que muestra el modal 
+function  showQuestion(e, p){
+  e = e || window.event;
+  e.preventDefault();
+  $("#product"+p.idProducts).modal("show");
+ 
+}
+//funcion que oculta el modal y elimina el producto del carrito 
+function closeQuestion(deleteProductCart, e, p){
+  e = e || window.event;
+  e.preventDefault();
+  $("#product"+p.idProducts).modal("hide");
+  deleteProductCart(e, p);
+}
 
+// funcion que aunmenta la cantidad de productos de un detalle 
 function moreProduct(e, p, updateProductCart) {
   p.quantityCart = p.quantityCart + 1;
   updateProductCart(e, p)
 }
+
+//funcion que calcula el sudtotal de un priducto multiplicando el precio por la cantidad 
 const calculateSudTotal = (pice, quantityCart) => (pice * quantityCart)
 
+//funcion que calcula el total 
 function calculateTotal(productList) {
   var price = 0;
   console.log(productList);
@@ -100,17 +134,15 @@ function calculateTotal(productList) {
   });
   return price;
 }
-
 /******** React Redux secction ********/
 const mapStoreToProps = state => ({
   cart: state.cart
 })
-
 const mapDispatchToProps = diapatch => ({
   deleteProductCart(e, product) {
     e = e || window.event;
     e.preventDefault();
-    diapatch({
+    diapatch({  
       type: "DELETE_PRODUCT_FROM_CART",
       product
     })
@@ -123,10 +155,7 @@ const mapDispatchToProps = diapatch => ({
       product
     })
   }
-
-
 })
 /************************************/
-
 export default connect(mapStoreToProps, mapDispatchToProps)(cartShopping);
 

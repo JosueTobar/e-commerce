@@ -14,10 +14,8 @@ export default class Home  extends React.Component{
   render(){
     return(
       <div>
-          <header>
-          <Nav/>
+        <Nav/>
           <Banner/>
-          </header>
           <Product/>
           <Category/>
           <Footer/>

@@ -9,7 +9,19 @@ import { validate } from '@babel/types';
 
 const products = ({ products, cart, baseUri, addProducToStore, addToCart ,updateProductCart }, productListCart) => (
   <div className="container" >
-    
+
+    <div aria-live="polite" className="sticky-top  notification-container mt-5 " aria-atomic="true" >  
+      <div  className="br-10 notification-p">
+        <div className="toast br-10" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-body notification br-10 ">
+             <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>  
+             Agredado al carrito... 
+          </div>
+        </div>
+      </div>
+    </div>
     <div className="row  text-center" >
       <div className="col-md-12 m-2 title-lg ">
         <p>LO MÁS VENDIDO</p>
@@ -35,7 +47,7 @@ const products = ({ products, cart, baseUri, addProducToStore, addToCart ,update
               </div>
               <di className="align-items-end mb-3">
                 <a onClick={(e) => validateAddingToCart(e, art, productListCart, addToCart, updateProductCart)} >  <i className="fa fa-shopping-cart pull-left link-p-l" ></i> </a> 
-                 <a onClick={(e) => ocultar()}> <i className="fa  fa-heart  pull-right link-p-r"></i>  </a>
+                 <a > <i className="fa  fa-heart  pull-right link-p-r"></i>  </a>
                 
                 
               </di>
@@ -53,12 +65,10 @@ const products = ({ products, cart, baseUri, addProducToStore, addToCart ,update
 
   </div>
 )
-
-document.onreadystatechange = () => {
-  if (document.readyState === 'complete') {
-     //document.... 
-  }
-};
+/** notificacion tiempo inicializacion y tiempo de duracion en milisegundos **/
+$(document).ready(function(){
+  $('.toast').toast({ delay: 3000 });
+});
 
 //validacion si hay datos en el estate glabal de redux
 const loadProducts = (productsList, baseUri, addProducToStore) => {
@@ -72,24 +82,21 @@ const loadProducts = (productsList, baseUri, addProducToStore) => {
       .catch(console.log)
   }
 }
-//valida si el producto ya existe en el carrito 
+//funcion que resive un evento, un objeto producto y una lista de productos y dos funciones una para agregar al carrito de compras y la otra para actualizar un producto dentro del carrito..
 const validateAddingToCart = (e, product, productList, addToCart, updateProductCart) => {
   var valdate = true;
   productList.map((p) => {
     if (p.idProducts === product.idProducts) {
       p.quantityCart = p.quantityCart + 1;
+      $('.toast').toast('show');
       updateProductCart(e,p);
       valdate = false;
     }
   });
   if (valdate) {
-      document.getElementById('msjBox').style.display="block";
+       $('.toast').toast('show');
       addToCart(e, product);
   }
-}
-
-function ocultar(){
-  document.getElementById('msjBox').style.display="none"
 }
 
 //Recive una cadena y retorna una cantida de palabras...
