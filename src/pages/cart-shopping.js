@@ -24,7 +24,7 @@ const cartShopping = ({ cart, deleteProductCart, updateProductCart }) => (
   </div>
 );
 
-const table = (cart, deleteProductCart, updateProductCart ,Total) => (
+const table = (cart, deleteProductCart, updateProductCart, Total) => (
   <table className="table table-bordered">
     <thead>
       <tr>
@@ -40,7 +40,7 @@ const table = (cart, deleteProductCart, updateProductCart ,Total) => (
         cart.map((p) => (
           <tr key={p.idProducts}>
             <td>
-              <div className="product-image-cart" > <img  src={(p.proImageSet.length > 0) ? p.proImageSet[0].url : "http://www.sanisidrolonas.com.ar/wp-content/uploads/2014/05/sin-imagen.jpg"} class="img-responsive" /> {p.nameProducts} </div>
+              <div className="product-image-cart" > <img src={(p.proImageSet.length > 0) ? p.proImageSet[0].url : "http://www.sanisidrolonas.com.ar/wp-content/uploads/2014/05/sin-imagen.jpg"} class="img-responsive" /> {p.nameProducts} </div>
               <div>
               </div>
             </td>
@@ -48,7 +48,7 @@ const table = (cart, deleteProductCart, updateProductCart ,Total) => (
             <td>
               <div className="row">
                 <di className="col-5">
-                  <button onClick={(e) => p = moreProduct(e, p, updateProductCart)}  className="pull-right">+</button>
+                  <button onClick={(e) => p = moreProduct(e, p, updateProductCart)} className="pull-right">+</button>
                 </di>
                 <di className="col-2">
                   <input className="form-control form-control-sm" type="text" id={"canti" + p.idProducts} value={p.quantityCart} />
@@ -58,27 +58,32 @@ const table = (cart, deleteProductCart, updateProductCart ,Total) => (
                 </di>
               </div>
             </td>
-            <td>${ p.subTotal = parseFloat(calculateSudTotal(p.price, p.quantityCart)).toFixed(2)}</td>
+            <td>${p.subTotal = parseFloat(calculateSudTotal(p.price, p.quantityCart)).toFixed(2)}</td>
             <td>
-              <button onClick={(e) =>showQuestion(e,p)} >X</button>
+              <button onClick={(e) => showQuestion(e, p)} >X</button>
             </td>
-            <div className="modal fade" id={"product"+p.idProducts} tabindex="-1" role="dialog" aria-labelledby={"product"+p.idProducts} aria-hidden="true">
-                  <div className="modal-dialog modal-dialog-centered" role="document">
-                    <div className="modal-content">
-                      <div className="modal-body">
-                        <div className="row">
-                         <div className="col-lg-12 md-5">
-                            Estas seguro que desa Eliminar es producto ?..
-                         </div> 
-                         <div class="col-lg-12 mt-3">
-                         <button type="button mt-5 pull-right" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button mt-5 pull-left"  onClick={(e) => closeQuestion(deleteProductCart ,e, p)} className="btn btn-danger">Ok</button>
-                         </div> 
-                        </div>
+            <div className="modal fade" id={"product" + p.idProducts} tabindex="-1" role="dialog" aria-labelledby={"product" + p.idProducts} aria-hidden="true">
+              <div className="modal-dialog modal-dialog-centered" role="document">
+                <div className="modal-content">
+                  <div className="modal-body">
+                    <div className="row">
+                      <div className="col-lg-12 md-5 text-center">
+                        Estas seguro que desa Eliminar es producto ?..
+                         </div>
+                    </div>
+                    <div className="row mt-5 text-center">
+                      <div class="col-md-6 ">
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </div>
+                      <div class="col-md-6">
+                        <button type="button" onClick={(e) => closeQuestion(deleteProductCart, e, p)} className="btn btn-danger">Ok</button>
                       </div>
                     </div>
+
                   </div>
                 </div>
+              </div>
+            </div>
           </tr>
         ))
       }
@@ -96,23 +101,23 @@ const table = (cart, deleteProductCart, updateProductCart ,Total) => (
 
 /*Cart operation */
 function lessProduct(e, p, updateProductCart) {
-  if(p.quantityCart >1){
+  if (p.quantityCart > 1) {
     p.quantityCart = p.quantityCart - 1;
     updateProductCart(e, p)
-  } 
+  }
 }
 //funcion que muestra el modal 
-function  showQuestion(e, p){
+function showQuestion(e, p) {
   e = e || window.event;
   e.preventDefault();
-  $("#product"+p.idProducts).modal("show");
- 
+  $("#product" + p.idProducts).modal("show");
+
 }
 //funcion que oculta el modal y elimina el producto del carrito 
-function closeQuestion(deleteProductCart, e, p){
+function closeQuestion(deleteProductCart, e, p) {
   e = e || window.event;
   e.preventDefault();
-  $("#product"+p.idProducts).modal("hide");
+  $("#product" + p.idProducts).modal("hide");
   deleteProductCart(e, p);
 }
 
@@ -142,7 +147,7 @@ const mapDispatchToProps = diapatch => ({
   deleteProductCart(e, product) {
     e = e || window.event;
     e.preventDefault();
-    diapatch({  
+    diapatch({
       type: "DELETE_PRODUCT_FROM_CART",
       product
     })

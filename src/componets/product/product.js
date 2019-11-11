@@ -28,7 +28,8 @@ const products = ({ products, cart, baseUri, addProducToStore, addToCart ,update
       </div>
     </div>
     <div className="row">
-      {loadProducts(products, baseUri, addProducToStore),
+      {
+        loadProducts(products, baseUri, addProducToStore),
         productListCart = cart,
         products.map(art => (
           <div key={art.idProducts} className="col-md-6  col-lg-3 mt-3 ">
@@ -56,12 +57,6 @@ const products = ({ products, cart, baseUri, addProducToStore, addToCart ,update
         ))}
     </div>
 
-    <div className="bs-example msjBox " id="msjBox" style={{'display':'none'}}> 
-            <div className="alert alert-info alert-dismissible">
-                <strong>Note!</strong> This is a simple example of dismissible alert.
-                
-            </div>
-        </div>
 
   </div>
 )
