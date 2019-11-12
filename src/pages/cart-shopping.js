@@ -93,7 +93,7 @@ const table = (cart, deleteProductCart, updateProductCart, Total) => (
         <td colSpan="2"></td>
         <td >Total </td>
         <td >${parseFloat(calculateTotal(cart)).toFixed(2)} </td>
-        <td>    <button className="btn  btn-primary mt-1"  > Efectuar pedido </button></td>
+        <td> <Link to={"/Shipping"} className="btn  btn-primary mt-1" > Efectuar pedido </Link> </td>
       </tr>
     </tfoot>
   </table>

@@ -11,10 +11,8 @@ import {
 export default class userRegistration extends React.Component {
   render() {
     return (
-      <div>
-        <header>
-          <Nav />
-        </header>
+      <div>   
+        <Nav />
         <body>
           <div className="conteiner" >
             <div className="row mt-4">

@@ -4,7 +4,8 @@ import Login from './pages/login';
 import Product from  './pages/product';
 import CartShopping from './pages/cart-shopping';
 import Registration from './pages/userRegistration';
-
+import Payment from './pages/payment';
+import Shipping from './pages/shipping';
 import {
   BrowserRouter as Router,
   Switch,
@@ -33,6 +34,12 @@ export default class Banner  extends React.Component{
                       </Route> 
                       <Route exact path="/registration">
                         <Registration />
+                      </Route>
+                      <Route exact path="/Payment">
+                        <Payment />
+                      </Route>
+                      <Route exact path="/Shipping">
+                        <Shipping />
                       </Route>
                 </Switch>
         </Router>
