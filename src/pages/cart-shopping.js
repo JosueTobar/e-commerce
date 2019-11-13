@@ -45,17 +45,17 @@ const table = (cart, deleteProductCart, updateProductCart, Total) => (
               </div>
             </td>
             <td>{p.price}</td>
-            <td>
-              <div className="row">
-                <di className="col-5">
-                  <button onClick={(e) => p = moreProduct(e, p, updateProductCart)} className="pull-right">+</button>
-                </di>
-                <di className="col-2">
-                  <input className="form-control form-control-sm" type="text" id={"canti" + p.idProducts} value={p.quantityCart} />
-                </di>
-                <di className="col-5">
-                  <button onClick={(e) => lessProduct(e, p, updateProductCart)} className="pull-left" >-</button>
-                </di>
+            <td >
+              <div className="cuantity">
+                <div>
+                  <button onClick={(e) => p = moreProduct(e, p, updateProductCart)} className="pull-right input-btn">+</button>
+                </div>
+                <div>
+                  <input className="form-control input-cart" type="text" id={"canti" + p.idProducts} value={p.quantityCart} />
+                </div>
+                <div>
+                  <button onClick={(e) => lessProduct(e, p, updateProductCart)} className="pull-left input-btn" >-</button>
+                </div>
               </div>
             </td>
             <td>${p.subTotal = parseFloat(calculateSudTotal(p.price, p.quantityCart)).toFixed(2)}</td>

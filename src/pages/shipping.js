@@ -53,7 +53,7 @@ const payment = () => (
 
               <div className="d-flex justify-content-around">
 
-                <div className="md-form mb-3">
+                <div className="md-form mb-5" >
                     <Link to={"/Payment"} className="btn btn-lg btn-block br-15 color-g2"> Siguiente</Link>
                  
                 </div>

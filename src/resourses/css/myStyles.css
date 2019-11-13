@@ -195,3 +195,32 @@
   top: 0; 
   right: 0;
 }
+.input-cart{
+  width: 40px;
+} 
+.input-btn{
+  height: 37px;
+}
+.cuantity{
+  display: flex;
+  justify-content: center;
+}
+/***************************  Payment **************************/
+.payment-icon{
+  padding: 15px;
+  margin: 5px;
+  font-size: 3em;
+  border-radius: 15px 15px 15px 15px;
+  -moz-border-radius: 15px 15px 15px 15px;
+  -webkit-border-radius: 15px 15px 15px 15px;
+}
+/************************ paymentMethod **************************/
+.images-paymentMethod{
+  height: 5em;
+  width: 5em;
+  object-fit: contain;
+}
+
+.btnNex{
+  width: 6em;
+}

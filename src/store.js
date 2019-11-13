@@ -1,4 +1,4 @@
-import {createStore} from "redux"
+import {combineReducers, createStore} from "redux"
 const initialState = {
     products:[
         {
@@ -564,6 +564,29 @@ const initialState = {
     ],
     product: {},
     cart: [],
+    paymentMethod: [
+        {
+          id:"paymentMethod1",
+          nombre: "Tarjeta de crédito  o débito ",
+          img: process.env.PUBLIC_URL + "/images/credit-card.png",
+        },
+        { 
+          id:"paymentMethod2",
+          nombre: "Efectivo",
+          img: process.env.PUBLIC_URL + "/images/money.png"
+        },
+        {
+          id:"paymentMethod3",
+          nombre: "Transferencia bancaria",
+          img: process.env.PUBLIC_URL + "/images/transfer.png"
+        },
+        { 
+          id:"paymentMethod4",
+          nombre: "Paypal",
+          img: process.env.PUBLIC_URL + "/images/paypal.png"
+        }
+      
+      ],
     baseUri:"http://192.168.100.33:8090/"
 }
 const reducerCart = (state = initialState,action)=>{

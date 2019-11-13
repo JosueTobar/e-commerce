@@ -7,7 +7,7 @@ import {
 export default class Nav extends React.Component {
   render() {
     return (
-      <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+      <nav className="navbar navbar-expand-lg navbar-light sticky-top  color-g1">
         <Link to="../" className="nav-link navbar-brand">
           TU MARCA/TULOGO
              </Link>
@@ -15,8 +15,8 @@ export default class Nav extends React.Component {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav mr-auto w-100 justify-content-end">
+        <div className="collapse navbar-collapse " id="navbarSupportedContent">
+          <ul className="navbar-nav mr-auto w-100 justify-content-end ">
             <li className="nav-item  active title-nav">
             </li>
             <li className="nav-item active">
