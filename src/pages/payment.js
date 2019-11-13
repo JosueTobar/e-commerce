@@ -111,12 +111,12 @@ const payment = ({ paymentMethod }) => (
 
         <div class="row">
             <div class="col-sm-6">
-              <Link to={"/Payment"} className="btn btn-lg btn-block br-15 color-g2 btnNex"> Atras</Link>
+              <Link to={"/Shipping"} className="btn btn-lg btn-block br-15 color-g2 btnNex"> Atras</Link>
             </div>
             <div class="col-sm-6 ">
-              <Link to={"/Payment"} className="btn btn-lg btn-block br-15 color-g2 btnNex pull-right"> Siguiente</Link>
+              <Link to={"/Confirm"} className="btn btn-lg btn-block br-15 color-g2 btnNex pull-right"> Siguiente</Link>
             </div>
-          </div>
+        </div>
 
       </div>
 

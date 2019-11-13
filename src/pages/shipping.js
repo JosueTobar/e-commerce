@@ -50,17 +50,17 @@ const payment = () => (
               <div className="md-form">
                 <input type="text" class="form-control form-control-lg mb-3 text-center br-15 color-g1 " placeholder="NUMERO DE TELÉFONO: " />
               </div>
-
-              <div className="d-flex justify-content-around">
-
-                <div className="md-form mb-5" >
-                    <Link to={"/Payment"} className="btn btn-lg btn-block br-15 color-g2"> Siguiente</Link>
-                 
-                </div>
-              </div>
             </form>
           </div>
           <div className="col-lg-3 mt-3"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+              <Link to={"/CardShopping"} className="btn btn-lg btn-block br-15 color-g2 btnNex"> Atras</Link>
+            </div>
+            <div class="col-sm-6 ">
+              <Link to={"/Payment"} className="btn btn-lg btn-block br-15 color-g2 btnNex pull-right"> Siguiente</Link>
+            </div>
         </div>
       </div>
     </body>

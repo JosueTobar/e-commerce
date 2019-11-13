@@ -6,6 +6,7 @@ import CartShopping from './pages/cart-shopping';
 import Registration from './pages/userRegistration';
 import Payment from './pages/payment';
 import Shipping from './pages/shipping';
+import Confirm from './pages/confirm';
 import {
   BrowserRouter as Router,
   Switch,
@@ -41,6 +42,10 @@ export default class Banner  extends React.Component{
                       <Route exact path="/Shipping">
                         <Shipping />
                       </Route>
+                      <Route exact path="/Confirm">
+                        <Confirm />
+                      </Route>
+                      
                 </Switch>
         </Router>
     </Provider>
