@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   BrowserRouter as Router,
+  browserHistory,
   Link
 } from "react-router-dom";
 import $ from "jquery";
@@ -9,8 +10,7 @@ import Footer from '../componets/footer/footer'
 import { connect } from "react-redux";
 import { validate, metaProperty } from '@babel/types';
 
-
-const payment = ({ paymentMethod }) => (
+const payment = ({ paymentMethod, updatePaymentMethod }) => (
   <div>
     <Nav />
     <body>
@@ -30,7 +30,7 @@ const payment = ({ paymentMethod }) => (
             <div className=" d-flex flex-row">
               {paymentMethod.map((pm, i, paymentMethod) => (
                 <div id={pm.id + "icon"} className="p-3 br-15 mt-4">
-                  <a onClick={(e) => ocultar(e, pm, paymentMethod)} key={i} data-toggle="collapse" href={"#" + pm.id} role="button" aria-expanded="false" aria-controls={pm.id}>
+                  <a id={pm.id+"sg"} onClick={(e) => ocultar(e, pm, paymentMethod ,updatePaymentMethod)} key={i} data-toggle="collapse" href={"#" + pm.id} role="button" aria-expanded="false" aria-controls={pm.id}>
                     <img className="images-paymentMethod" src={pm.img} alt="Responsive image" />
                   </a>
                 </div>
@@ -72,11 +72,9 @@ const payment = ({ paymentMethod }) => (
                     <input type="text" class="form-control form-control-lg mb-3 text-center br-15 color-g1" placeholder="NOMBRES Y APELLIDOS" />
                   </div>
                 </div>
-
               </form>
             </div>
           </div>
-       
         </div>
 
         {/* payment Method 1*/}
@@ -87,15 +85,13 @@ const payment = ({ paymentMethod }) => (
             </div>
           </div>
         </div>
-
         <div class="collapse" id="paymentMethod3">
           <div className="row mt-2 text-center">
-
             <div className="col-lg-12 mt-3 text-center title-lg">
               Numero de cuenta: 123456789
             </div>
             <div className="col-lg-12 mt-3 text-center title-lg">
-              My banco
+               Nombre banco
             </div>          
             </div>
         </div>
@@ -103,37 +99,37 @@ const payment = ({ paymentMethod }) => (
           <div className="row mt-2 text-center">
             <div className="col-lg-3 mt-2"></div>
             <div className="col-lg-6 mt-3">
-              <p style={{ "font-size": "2em" }} >payment Method 4</p>
+              <p style={{ "font-size": "2em" }} ></p>
             </div>
             <div className="col-lg-3 mt-3"></div>
           </div>
         </div>
-
-        <div class="row">
+        <div class="row mb-5">
             <div class="col-sm-6">
               <Link to={"/Shipping"} className="btn btn-lg btn-block br-15 color-g2 btnNex"> Atras</Link>
             </div>
             <div class="col-sm-6 ">
-              <Link to={"/Confirm"} className="btn btn-lg btn-block br-15 color-g2 btnNex pull-right"> Siguiente</Link>
+              <Link id="next" to={"/Confirm"} className="btn btn-lg btn-block br-15 color-g2 btnNex pull-right"> Siguiente</Link>
+           
             </div>
+            
         </div>
-
       </div>
-
     </body>
   </div>
 )
 
-function ocultar(e, paymentMethod, listPaymentMethod) {
+function ocultar(e, paymentMethod, listPaymentMethod, updatePaymentMethod) {
   e = e || window.event;
+  
   e.preventDefault();
-
+  updatePaymentMethod(paymentMethod);
   listPaymentMethod.forEach(function (element) {
     $('#' + element.id).collapse('hide');
     $('#' + element.id + "icon").removeClass("color-g2");
   });
-  $('#' + paymentMethod.id + "icon").collapse('show');
-  $('#' + paymentMethod.id + "icon").addClass("color-g2");
+    $('#' + paymentMethod.id + "icon").collapse('show');
+    $('#' + paymentMethod.id + "icon").addClass("color-g2");
 }
 
 $(".paymentMethod").click(function () {
@@ -147,6 +143,16 @@ const mapStoreToProps = state => ({
   baseUri: state.baseUri,
   paymentMethod: state.paymentMethod
 })
-const mapDispatchToProps = diapatch => ({})
+
+const mapDispatchToProps = diapatch => ({
+  updatePaymentMethod(paymentMethod) {
+  
+      paymentMethod.state = true;
+      diapatch({
+          type: "UPDATE_PAYMENT_METHOD",
+          paymentMethod
+      })
+  }
+})
 
 export default connect(mapStoreToProps, mapDispatchToProps)(payment);

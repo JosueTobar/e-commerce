@@ -26,7 +26,7 @@ export default class LoginPage extends React.Component {
   }
 
   cargarPoduct = () => {
-    var url = 'http://192.168.100.33:8090/ecommerce/api/product/' + this.props.id;
+    var url = 'http://192.168.100.45:8090/ecommerce/api/product/' + this.props.id;
     fetch(url)
       .then(response => response.json())
       .then((products) => {

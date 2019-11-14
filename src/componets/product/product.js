@@ -68,7 +68,7 @@ $(document).ready(function(){
 //validacion si hay datos en el estate glabal de redux
 const loadProducts = (productsList, baseUri, addProducToStore) => {
   if (productsList.length <= 0) {
-    var url = baseUri + "ecommerce/api/product"
+    var url = "http://192.168.100.45:8090/ecommerce/api/product"
     fetch(url)
       .then(response => response.json())
       .then((products) => {
