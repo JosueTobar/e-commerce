@@ -24,7 +24,7 @@ const cartShopping = ({ cart, deleteProductCart, updateProductCart }) => (
   </div>
 );
 
-const table = (cart, deleteProductCart, updateProductCart, Total) => (
+const table = (cart, deleteProductCart, updateProductCart) => (
   <table className="table table-bordered">
     <thead>
       <tr>
