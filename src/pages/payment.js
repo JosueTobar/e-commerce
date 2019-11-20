@@ -110,7 +110,7 @@ const payment = ({ paymentMethod, updatePaymentMethod }) => (
             </div>
             <div class="col-sm-6 ">
               <Link id="next" to={"/Confirm"} className="btn btn-lg btn-block br-15 color-g2 btnNex pull-right"> Siguiente</Link>
-           
+              
             </div>
             
         </div>
